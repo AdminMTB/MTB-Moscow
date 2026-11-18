@@ -64,7 +64,9 @@ font-weight: bold;font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sa
 text-decoration: none;}
 
 .photomtb {max-width: 100%;
-height: auto;
+height: 100%;
+width: 100%;
+display: flex;
 transform: rotate(33.21deg);
 margin-top: 50px;
 margin-right: 50px;}
