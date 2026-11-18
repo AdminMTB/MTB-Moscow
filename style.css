@@ -66,6 +66,7 @@ text-decoration: none;}
 .photomtb {max-width: 100%;
 height: 100%;
 width: 100%;
+max-width: 120%;
 display: flex;
 transform: rotate(33.21deg);
 margin-top: 50px;
