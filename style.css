@@ -1,0 +1,71 @@
+body {background-image: url(images/background.png);
+margin: 0;
+opacity: 0;
+animation: fadeInBody 1.3s ease-in 0.5s forwards;}
+
+@keyframes fadeInBody {0% {opacity: 0;}
+100% {opacity: 1;}}
+
+header {display: flex;
+align-items: center;
+justify-content: space-between;}
+
+.loginLink {background-color: #2D6A4F;
+color: white;
+height: 32px;width: 72px;
+border-radius: 15px;
+margin-left: auto;
+margin-right: 12px;
+margin-top: 44px;
+border: none;
+padding: 0px;
+display: inline-flex;
+align-items: center;
+justify-content: center;
+text-decoration: none;}
+
+h1 {color: #2D6A4F;
+font-family: Impact, Haettenschweiler, 'Arial Na', sans-serif;
+margin-left: 4px;margin-right: 82px;}
+
+.link-list {padding-left: 0px;
+margin-bottom: 10px;
+text-decoration: none;
+color: #000;
+font-size: 24px;}
+
+.link-list a:hover {color: gray;
+text-decoration: underline;}
+
+.logo {margin-left: 4px;
+margin-top: 27px;}
+
+.link1 {margin-top: 225x;
+margin-left: 4px;
+color: #191919;
+font-size: 24px;
+font-weight: bold;
+font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+text-decoration: none;}
+
+.link2 {margin-top: 299px;
+margin-left: 4px;
+color: #191919;
+font-size: 24px;
+font-weight: bold;
+font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+text-decoration: none;}
+
+.link3 {margin-top: 225px;
+margin-left: 4px;
+color: #191919;
+font-size: 24px;
+font-weight: bold;font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+text-decoration: none;}
+
+.photomtb {max-width: 100%;
+height: auto;
+transform: rotate(33.21deg);
+margin-top: 50px;
+margin-right: 50px;}
+
