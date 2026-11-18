@@ -63,7 +63,7 @@ font-size: 24px;
 font-weight: bold;font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 text-decoration: none;}
 
-.photomtb {max-width: 100%;
+.photomtb {max-width: none;
 height: auto;
 width: 130%;
 display: block;
