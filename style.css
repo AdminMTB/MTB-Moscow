@@ -17,7 +17,8 @@ display: inline-flex;
 align-items: center;
 justify-content: center;
 text-decoration: none;
-font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif}
+font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+font-weight:bolder}
 
 .reveal, .h1 {color: #2D6A4F;
 font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
@@ -48,7 +49,7 @@ margin-top: 27px;}
 margin-left: 4px;
 color: #191919;
 font-size: 24px;
-font-weight: bold;
+font-weight: bolder;
 font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 text-decoration: none;
 transition-delay: 0.3s; }
@@ -57,7 +58,7 @@ transition-delay: 0.3s; }
 margin-left: 4px;
 color: #191919;
 font-size: 24px;
-font-weight: bold;
+font-weight: bolder;
 font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 text-decoration: none;
 transition-delay: 0.5s; }
@@ -66,7 +67,8 @@ transition-delay: 0.5s; }
 margin-left: 4px;
 color: #191919;
 font-size: 24px;
-font-weight: bold;font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+font-weight: bolder;
+font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 text-decoration: none;
 transition-delay: 0.7s; }
 
