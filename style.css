@@ -22,7 +22,8 @@ padding: 0px;
 display: inline-flex;
 align-items: center;
 justify-content: center;
-text-decoration: none;}
+text-decoration: none;
+font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif}
 
 .reveal, .h1 {color: #2D6A4F;
 font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
