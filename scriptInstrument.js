@@ -43,22 +43,26 @@ function calculateTirePressure({
   condition = 'dry'
 }) {
   const totalWeight = riderWeight + bikeWeight;
-  const widthFactor = Math.pow(tireWidth / 25, 1.55);
 
-  let frontBar = ((totalWeight * 0.44) / 7.5) / widthFactor;
-  let rearBar = ((totalWeight * 0.56) / 7.5) / widthFactor;
+  const baseFront = (totalWeight * 0.022) + 0.55;
+  const baseRear = (totalWeight * 0.026) + 0.65;
+
+  const widthRatio = Math.pow(58 / tireWidth, 1.15);
+
+  let frontBar = baseFront * widthRatio;
+  let rearBar = baseRear * widthRatio;
 
   const diameterModifiers = {
     '29': 0.96,
     '27.5': 1.0,
-    '26': 1.04
+    '26': 1.05
   };
 
   const surfaceModifiers = {
-    xc: 0.78,
-    trail: 0.72,
-    enduro: 0.76,
-    pump: 1.05
+    xc: 1.05,
+    trail: 0.95,
+    enduro: 1.02,
+    pump: 1.75
   };
 
   const conditionModifiers = {
@@ -68,13 +72,21 @@ function calculateTirePressure({
 
   const setupMod = setup === 'tubeless' ? 0.88 : 1.0;
   const diaMod = diameterModifiers[wheelDiameter] || 0.96;
-  const surfMod = surfaceModifiers[surface] || 0.72;
+  const surfMod = surfaceModifiers[surface] || 0.95;
   const condMod = conditionModifiers[condition] || 1.0;
 
   const totalMod = setupMod * diaMod * surfMod * condMod;
 
   frontBar *= totalMod;
   rearBar *= totalMod;
+
+  if (surface === 'pump') {
+    frontBar = Math.max(frontBar, 2.8);
+    rearBar = Math.max(rearBar, 3.0);
+  } else {
+    frontBar = Math.max(frontBar, 1.1);
+    rearBar = Math.max(rearBar, 1.2);
+  }
 
   const toPsi = (bar) => Math.round(bar * 14.5038);
 
@@ -85,6 +97,7 @@ function calculateTirePressure({
     rearPsi: toPsi(rearBar)
   };
 }
+
 
 function calculateForkPressure({
   riderWeight,
