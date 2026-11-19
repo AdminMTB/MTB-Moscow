@@ -22,11 +22,10 @@
   </nav>
 
   <main class="calculators-container">
-    <!-- 1. КАЛЬКУЛЯТОР ДЛИНЫ СПИЦ -->
     <section id="spokes-calc" class="calc-section">
       <div class="calc-header">
         <h2>Калькулятор длины спиц</h2>
-        <button type="button" class="collapse-btn">Свернуть</button>
+        <button type="button" class="collapse-btn">Свернуть ▲</button>
       </div>
       
       <div class="calc-grid">
@@ -105,11 +104,10 @@
       </div>
     </section>
 
-    <!-- 2. КАЛЬКУЛЯТОР ДАВЛЕНИЯ В ШИНАХ -->
     <section id="tires-calc" class="calc-section">
       <div class="calc-header">
         <h2>Калькулятор давления в шинах</h2>
-        <button type="button" class="collapse-btn">Свернуть</button>
+        <button type="button" class="collapse-btn">Свернуть ▲</button>
       </div>
 
       <div class="calc-grid">
@@ -135,11 +133,6 @@
           </select>
         </div>
         <div class="input-group">
-          <label for="tr-rim-width">Внутренняя ширина обода (мм)</label>
-          <input type="number" id="tr-rim-width" value="30" min="19" max="50" step="0.5">
-        </div>
-
-        <div class="input-group">
           <label for="tr-diameter">Диаметр колеса</label>
           <select id="tr-diameter">
             <option value="29" selected>29"</option>
@@ -147,6 +140,7 @@
             <option value="26">26"</option>
           </select>
         </div>
+
         <div class="input-group">
           <label for="tr-setup">Тип установки</label>
           <select id="tr-setup">
@@ -154,7 +148,6 @@
             <option value="tube">С камерой</option>
           </select>
         </div>
-
         <div class="input-group">
           <label for="tr-surface">Трасса / Покрытие</label>
           <select id="tr-surface">
@@ -164,7 +157,8 @@
             <option value="pump">Памп-трек / Дерт / Асфальт</option>
           </select>
         </div>
-        <div class="input-group">
+
+        <div class="input-group full-width">
           <label for="tr-condition">Погодные условия</label>
           <select id="tr-condition">
             <option value="dry" selected>Сухо</option>
@@ -185,11 +179,10 @@
       </div>
     </section>
 
-    <!-- 3. КАЛЬКУЛЯТОР ДАВЛЕНИЯ В ВИЛКЕ -->
     <section id="fork-calc" class="calc-section">
       <div class="calc-header">
         <h2>Калькулятор давления в вилке</h2>
-        <button type="button" class="collapse-btn">Свернуть</button>
+        <button type="button" class="collapse-btn">Свернуть ▲</button>
       </div>
 
       <div class="calc-grid">
@@ -200,6 +193,7 @@
         <div class="input-group">
           <label for="fk-type">Тип вилки (ход / диаметр ног)</label>
           <select id="fk-type">
+            <option value="dj">Дёрт / Стрит (80–100 мм)</option>
             <option value="xc">Кросс-кантри (100–120 мм / 32–34 мм)</option>
             <option value="trail" selected>Трейл (130–150 мм / 34–36 мм)</option>
             <option value="enduro">Эндуро (160–180 мм / 36–38 мм)</option>
