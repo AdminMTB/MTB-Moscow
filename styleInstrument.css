@@ -1,0 +1,232 @@
+body {font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;background-color: #e0e9e5;}
+
+header {display: flex;
+align-items: center;
+justify-content: space-between;}
+
+.loginLink {background-color: #2D6A4F;
+color: white;
+height: 32px;width: 72px;
+border-radius: 15px;
+margin-left: auto;
+margin-right: 5px;
+margin-top: 44px;
+border: none;
+padding: 0px;
+display: inline-flex;
+align-items: center;
+justify-content: center;
+text-decoration: none;}
+
+.logo {margin-left: 4px;
+margin-top: 27px;}
+.calculators-container {
+margin-top: 24px;}
+
+.calc-section {display: none;
+padding: 20px;
+border-radius: 12px;
+background: rgba(255, 255, 255, 0.05); /* подстройте под фон вашего сайта */
+border: 1px solid rgba(255, 255, 255, 0.15);}
+
+.calc-section.active {display: block;}
+
+.calc-grid {display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 14px;
+margin-top: 16px;}
+
+.input-group {
+display: flex;
+flex-direction: column;
+gap: 6px;}
+
+.input-group label {
+font-size: 13px;
+opacity: 0.85;}
+
+.input-group input,
+.input-group select {padding: 8px 10px;
+border-radius: 6px;
+border: 1px solid #ccc;
+font-size: 14px;}
+
+.calc-results {margin-top: 20px;
+padding: 15px;
+border-radius: 8px;
+background: rgba(37, 99, 235, 0.12);
+display: flex;
+justify-content: space-around;
+text-align: center;}
+
+.res-item span {
+display: block;
+font-size: 13px;
+margin-bottom: 4px;}
+
+.res-item strong {font-size: 20px;}
+
+@media (max-width: 520px) {.calc-grid {grid-template-columns: 1fr;}}
+
+.calc-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.calc-warning {
+  display: none;
+  margin-top: 12px;
+  color: #dc2626;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.calculators-container {
+  margin-top: 24px;
+}
+
+.calc-section {
+  display: none;
+  padding: 20px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.calc-section.active {
+  display: block;
+}
+
+.calc-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.calc-header h2 {
+  margin: 0;
+  font-size: 20px;
+}
+
+.collapse-btn {
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  background: rgba(255, 255, 255, 0.5);
+  color: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.collapse-btn:hover {
+  background: rgba(255, 255, 255, 0.85);
+}
+
+.calc-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.input-group label {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.input-group input,
+.input-group select {
+  padding: 8px 10px;
+  border-radius: 6px;
+  border: 1px solid #cbd5e1;
+  font-size: 14px;
+  background: #ffffff;
+}
+
+.calc-results {
+  margin-top: 20px;
+  padding: 15px;
+  border-radius: 8px;
+  background: rgba(37, 99, 235, 0.12);
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.res-item span {
+  display: block;
+  font-size: 13px;
+  margin-bottom: 4px;
+}
+
+.res-item strong {
+  font-size: 18px;
+}
+
+.link-list a.active-tab {
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+@media (max-width: 540px) {
+  .calc-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.link-list {
+  list-style: none;
+  padding: 0;
+  margin: 14px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  max-width: 260px;
+}
+
+.link-list li {
+  margin: 0;
+  width: 100%;
+}
+
+.link-list a {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 8px 14px;
+  background-color: #2f5e4e;
+  color: #ffffff;
+  text-decoration: none;
+  text-align: center;
+  border-radius: 15px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  border: 1.5px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.link-list a:hover {
+  background-color: #23473b;
+}
+
+.link-list a.active-tab {
+  background-color: #ffffff;
+  color: #2f5e4e;
+  border-color: #2f5e4e;
+  text-decoration: none;
+}

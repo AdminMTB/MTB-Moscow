@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styleInstrument.css">
+    <title>Инструменты</title>
+</head>
+<body>
+ <div class="app-container">
+  <header>
+    <img class="logo" src="images/Tlogo.png" alt="Логотип">
+    <a class="loginLink" href="login/index.html">Войти</a>
+  </header>
+
+  <nav>
+     <ul class="link-list">
+      <li><a class="link1 reveal" href="#spokes-calc" data-calc="spokes-calc">Калькулятор длины спиц</a></li>
+      <li><a class="link2 reveal" href="#tires-calc" data-calc="tires-calc">Калькулятор давления в шинах</a></li>
+      <li><a class="link3 reveal" href="#fork-calc" data-calc="fork-calc">Калькулятор давления в вилке</a></li>
+     </ul>
+  </nav>
+
+  <main class="calculators-container">
+    <!-- 1. КАЛЬКУЛЯТОР ДЛИНЫ СПИЦ -->
+    <section id="spokes-calc" class="calc-section">
+      <div class="calc-header">
+        <h2>Калькулятор длины спиц</h2>
+        <button type="button" class="collapse-btn">Свернуть ▲</button>
+      </div>
+      
+      <div class="calc-grid">
+        <div class="input-group">
+          <label for="sp-erd">ERD обода (мм)</label>
+          <input type="number" id="sp-erd" value="600" min="100" max="800">
+        </div>
+        <div class="input-group">
+          <label for="sp-count">Количество спиц</label>
+          <select id="sp-count">
+            <option value="24">24</option>
+            <option value="28">28</option>
+            <option value="32" selected>32</option>
+            <option value="36">36</option>
+          </select>
+        </div>
+
+        <div class="input-group">
+          <label for="sp-flange-l">Диаметр левого фланца (мм)</label>
+          <input type="number" id="sp-flange-l" value="58" step="0.5">
+        </div>
+        <div class="input-group">
+          <label for="sp-flange-r">Диаметр правого фланца (мм)</label>
+          <input type="number" id="sp-flange-r" value="58" step="0.5">
+        </div>
+
+        <div class="input-group">
+          <label for="sp-offset-l">Центр — левый фланец (мм)</label>
+          <input type="number" id="sp-offset-l" value="34" step="0.5">
+        </div>
+        <div class="input-group">
+          <label for="sp-offset-r">Центр — правый фланец (мм)</label>
+          <input type="number" id="sp-offset-r" value="20.5" step="0.5">
+        </div>
+
+        <div class="input-group">
+          <label for="sp-crosses-l">Кресты (левая сторона)</label>
+          <select id="sp-crosses-l">
+            <option value="0">0 (Солнышко)</option>
+            <option value="1">1 крест</option>
+            <option value="2">2 креста</option>
+            <option value="3" selected>3 креста</option>
+            <option value="4">4 креста</option>
+          </select>
+        </div>
+        <div class="input-group">
+          <label for="sp-crosses-r">Кресты (правая сторона)</label>
+          <select id="sp-crosses-r">
+            <option value="0">0 (Солнышко)</option>
+            <option value="1">1 крест</option>
+            <option value="2">2 креста</option>
+            <option value="3" selected>3 креста</option>
+            <option value="4">4 креста</option>
+          </select>
+        </div>
+
+        <div class="input-group">
+          <label for="sp-hole-dia">Отверстие фланца (мм)</label>
+          <input type="number" id="sp-hole-dia" value="2.5" step="0.1">
+        </div>
+        <div class="input-group">
+          <label for="sp-rim-offset">Смещение обода (мм)</label>
+          <input type="number" id="sp-rim-offset" value="0" step="0.5">
+        </div>
+      </div>
+
+      <div class="calc-results">
+        <div class="res-item">
+          <span>Левая сторона (NDS):</span>
+          <strong id="res-spoke-l">—</strong>
+        </div>
+        <div class="res-item">
+          <span>Правая сторона (DS):</span>
+          <strong id="res-spoke-r">—</strong>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. КАЛЬКУЛЯТОР ДАВЛЕНИЯ В ШИНАХ -->
+    <section id="tires-calc" class="calc-section">
+      <div class="calc-header">
+        <h2>Калькулятор давления в шинах</h2>
+        <button type="button" class="collapse-btn">Свернуть ▲</button>
+      </div>
+
+      <div class="calc-grid">
+        <div class="input-group">
+          <label for="tr-rider">Вес райдера (кг)</label>
+          <input type="number" id="tr-rider" value="75" min="30" max="180">
+        </div>
+        <div class="input-group">
+          <label for="tr-bike">Вес велосипеда (кг)</label>
+          <input type="number" id="tr-bike" value="13.5" min="8" max="35" step="0.5">
+        </div>
+
+        <div class="input-group">
+          <label for="tr-width">Ширина покрышки</label>
+          <select id="tr-width">
+            <option value="53">2.1"</option>
+            <option value="57">2.25"</option>
+            <option value="60" selected>2.35"</option>
+            <option value="61">2.4"</option>
+            <option value="64">2.5"</option>
+            <option value="66">2.6"</option>
+            <option value="71">2.8" (Plus)</option>
+          </select>
+        </div>
+        <div class="input-group">
+          <label for="tr-rim-width">Внутренняя ширина обода (мм)</label>
+          <input type="number" id="tr-rim-width" value="30" min="19" max="50" step="0.5">
+        </div>
+
+        <div class="input-group">
+          <label for="tr-diameter">Диаметр колеса</label>
+          <select id="tr-diameter">
+            <option value="29" selected>29"</option>
+            <option value="27.5">27.5"</option>
+            <option value="26">26"</option>
+          </select>
+        </div>
+        <div class="input-group">
+          <label for="tr-setup">Тип установки</label>
+          <select id="tr-setup">
+            <option value="tubeless" selected>Бескамерно</option>
+            <option value="tube">С камерой</option>
+          </select>
+        </div>
+
+        <div class="input-group">
+          <label for="tr-surface">Трасса / Покрытие</label>
+          <select id="tr-surface">
+            <option value="xc">Плотный грунт / Кросс-кантри</option>
+            <option value="trail" selected>Трейл / Корни и камни</option>
+            <option value="enduro">Эндуро / Жёсткий рельеф</option>
+            <option value="pump">Памп-трек / Дерт / Асфальт</option>
+          </select>
+        </div>
+        <div class="input-group">
+          <label for="tr-condition">Погодные условия</label>
+          <select id="tr-condition">
+            <option value="dry" selected>Сухо</option>
+            <option value="wet">Мокро / Грязь</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="calc-results">
+        <div class="res-item">
+          <span>Переднее колесо:</span>
+          <strong id="res-tire-f">—</strong>
+        </div>
+        <div class="res-item">
+          <span>Заднее колесо:</span>
+          <strong id="res-tire-r">—</strong>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. КАЛЬКУЛЯТОР ДАВЛЕНИЯ В ВИЛКЕ -->
+    <section id="fork-calc" class="calc-section">
+      <div class="calc-header">
+        <h2>Калькулятор давления в вилке</h2>
+        <button type="button" class="collapse-btn">Свернуть ▲</button>
+      </div>
+
+      <div class="calc-grid">
+        <div class="input-group">
+          <label for="fk-weight">Вес райдера (кг)</label>
+          <input type="number" id="fk-weight" value="75" min="35" max="160">
+        </div>
+        <div class="input-group">
+          <label for="fk-type">Тип вилки (ход / диаметр ног)</label>
+          <select id="fk-type">
+            <option value="xc">Кросс-кантри (100–120 мм / 32–34 мм)</option>
+            <option value="trail" selected>Трейл (130–150 мм / 34–36 мм)</option>
+            <option value="enduro">Эндуро (160–180 мм / 36–38 мм)</option>
+            <option value="dh">Даунхилл / Двухкоронка (200 мм)</option>
+          </select>
+        </div>
+
+        <div class="input-group">
+          <label for="fk-style">Стиль катания (Желаемый сэг)</label>
+          <select id="fk-style">
+            <option value="plush">Мягко / Плюш (Сэг 25–30%)</option>
+            <option value="balanced" selected>Универсально (Сэг 20%)</option>
+            <option value="firm">Жёстко / Прыжки (Сэг 15%)</option>
+          </select>
+        </div>
+        <div class="input-group">
+          <label for="fk-tokens">Проставки в камере (Токены)</label>
+          <select id="fk-tokens">
+            <option value="0">0 шт. (Линейная работа)</option>
+            <option value="1" selected>1–2 шт. (Стандарт)</option>
+            <option value="3">3+ шт. (Высокая прогрессия)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="calc-results">
+        <div class="res-item">
+          <span>Стартовое давление:</span>
+          <strong id="res-fork-psi">—</strong>
+        </div>
+        <div class="res-item">
+          <span>Целевой сэг:</span>
+          <strong id="res-fork-sag">—</strong>
+        </div>
+        <div class="res-item">
+          <span>Отскок (от закрытого):</span>
+          <strong id="res-fork-rebound">—</strong>
+        </div>
+      </div>
+    </section>
+  </main>
+ </div>
+
+ <script src="scriptInstrument.js"></script>
+</body>
+</html>
