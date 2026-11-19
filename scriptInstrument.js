@@ -37,19 +37,13 @@ function calculateTirePressure({
   riderWeight,
   bikeWeight = 13.5,
   tireWidth,
-  rimWidth = 30,
   wheelDiameter = '29',
   setup = 'tubeless',
   surface = 'trail',
   condition = 'dry'
 }) {
   const totalWeight = riderWeight + bikeWeight;
-
-  const nominalRim = tireWidth * 0.52;
-  const effectiveWidth = tireWidth + (rimWidth - nominalRim) * 0.35;
-  const safeWidth = Math.max(effectiveWidth, 40);
-
-  const widthFactor = Math.pow(safeWidth / 25, 1.55);
+  const widthFactor = Math.pow(tireWidth / 25, 1.55);
 
   let frontBar = ((totalWeight * 0.44) / 7.5) / widthFactor;
   let rearBar = ((totalWeight * 0.56) / 7.5) / widthFactor;
@@ -99,6 +93,7 @@ function calculateForkPressure({
   tokens = 1
 }) {
   const typePresets = {
+    dj:     { mult: 1.65, offset: 25 },
     xc:     { mult: 1.22, offset: 5 },
     trail:  { mult: 1.08, offset: 8 },
     enduro: { mult: 1.02, offset: 10 },
@@ -136,7 +131,7 @@ function calculateForkPressure({
   return {
     psi,
     bar,
-    sag: sagLabels[style] || '20%',
+    sag: forkType === 'dj' ? '10–15%' : (sagLabels[style] || '20%'),
     rebound: `${reboundClicks} кликов`
   };
 }
@@ -255,7 +250,6 @@ document.addEventListener('DOMContentLoaded', () => {
     rider: document.getElementById('tr-rider'),
     bike: document.getElementById('tr-bike'),
     width: document.getElementById('tr-width'),
-    rimWidth: document.getElementById('tr-rim-width'),
     diameter: document.getElementById('tr-diameter'),
     setup: document.getElementById('tr-setup'),
     surface: document.getElementById('tr-surface'),
@@ -271,7 +265,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const riderWeight = getFloat(tireInputs.rider);
     const bikeWeight = getFloat(tireInputs.bike, 0);
     const tireWidth = getFloat(tireInputs.width);
-    const rimWidth = getFloat(tireInputs.rimWidth, 30);
     const wheelDiameter = tireInputs.diameter?.value || '29';
     const setup = tireInputs.setup?.value || 'tubeless';
     const surface = tireInputs.surface?.value || 'trail';
@@ -280,8 +273,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const isInvalid =
       riderWeight <= 0 || Number.isNaN(riderWeight) ||
       bikeWeight < 0 || Number.isNaN(bikeWeight) ||
-      tireWidth <= 0 || Number.isNaN(tireWidth) ||
-      rimWidth <= 0 || Number.isNaN(rimWidth);
+      tireWidth <= 0 || Number.isNaN(tireWidth);
 
     if (isInvalid) {
       if (tireOutputs.front) tireOutputs.front.textContent = '—';
@@ -293,7 +285,6 @@ document.addEventListener('DOMContentLoaded', () => {
       riderWeight,
       bikeWeight,
       tireWidth,
-      rimWidth,
       wheelDiameter,
       setup,
       surface,
@@ -336,17 +327,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const result = calculateForkPressure({
       riderWeight,
-      forkType,style,
-tokens
-});
-if (forkOutputs.psi) forkOutputs.psi.textContent = `${result.psi} PSI (${result.bar} Bar)`;
-if (forkOutputs.sag) forkOutputs.sag.textContent = result.sag;
-if (forkOutputs.rebound) forkOutputs.rebound.textContent = result.rebound;
-}
-Object.values(forkInputs).forEach(el => {
-if (el) el.addEventListener('input', updateFork);
-});
-updateSpokes();
-updateTires();
-updateFork();
+      forkType,
+      style,
+      tokens
+    });
+
+    if (forkOutputs.psi) forkOutputs.psi.textContent = `${result.psi} PSI (${result.bar} Bar)`;
+    if (forkOutputs.sag) forkOutputs.sag.textContent = result.sag;
+    if (forkOutputs.rebound) forkOutputs.rebound.textContent = result.rebound;
+  }
+
+  Object.values(forkInputs).forEach(el => {
+    if (el) el.addEventListener('input', updateFork);
+  });
+
+  updateSpokes();
+  updateTires();
+  updateFork();
 });
