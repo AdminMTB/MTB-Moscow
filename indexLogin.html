@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styleLogin.css">
+    <title>Вход и регистрация</title>
+    <link rel="stylesheet" href="styleLogin.css">
+</head>
+<body>
+
+  <div class="auth-container">
+    <div class="tabs">
+      <button type="button" class="btnLogin active" onclick="switchTab('login')">Вход</button>
+      <button type="button" class="btnReg" onclick="switchTab('register')">Регистрация</button>
+    </div>
+<form id="login-form" class="reg-form auth-form active" action="/login" method="post" novalidate>
+  <div class="form-group">
+    <label for="login-email">Электронная почта</label><br>
+    <input type="email" id="login-email" name="email" required>
+    <span class="error-msg"></span>
+  </div>
+
+  <div class="form-group">
+    <label for="login-password">Пароль</label><br>
+    <input type="password" id="login-password" name="password" required>
+    <span class="error-msg"></span>
+  </div>
+
+  <button type="submit" class="btnFinish">Войти</button>
+</form>
+
+
+<form id="register-form" class="reg-form auth-form" action="/register" method="post" novalidate>
+  <div class="form-group">
+    <label for="name">Имя</label><br>
+    <input type="text" id="name" name="name" required>
+    <span class="error-msg"></span>
+  </div>
+
+  <div class="form-group">
+    <label for="email">Электронная почта</label><br>
+    <input type="email" id="email" name="email" required>
+    <span class="error-msg"></span>
+  </div>
+
+  <div class="form-group">
+    <label for="password">Пароль</label><br>
+    <input type="password" id="password" name="password" minlength="6" required>
+    <span class="error-msg"></span>
+  </div>
+
+  <div class="form-group">
+    <label for="password_confirm">Повторите пароль</label><br>
+    <input type="password" id="password_confirm" name="password_confirm" minlength="6" required>
+    <span class="error-msg"></span>
+  </div>
+
+  <button type="submit" class="btnFinish">Зарегистрироваться</button>
+</form>
+
+  </div>
+
+<script>
+  function switchTab(tab) {
+    const btnLogin = document.querySelector('.btnLogin');
+    const btnReg = document.querySelector('.btnReg');
+    const loginForm = document.getElementById('login-form');
+    const registerForm = document.getElementById('register-form');
+
+    if (tab === 'login') {
+      btnLogin.classList.add('active');
+      btnReg.classList.remove('active');
+      loginForm.classList.add('active');
+      registerForm.classList.remove('active');
+    } else {
+      btnReg.classList.add('active');
+      btnLogin.classList.remove('active');
+      registerForm.classList.add('active');
+      loginForm.classList.remove('active');
+    }
+  }
+
+  // Современная валидация форм
+  document.querySelectorAll('.auth-form').forEach(form => {
+    const inputs = form.querySelectorAll('input');
+
+    // Проверка при отправке формы
+    form.addEventListener('submit', function(e) {
+      let isFormValid = true;
+
+      inputs.forEach(input => {
+        if (!validateInput(input)) {
+          isFormValid = false;
+        }
+      });
+
+      // Дополнительная проверка совпадения паролей при регистрации
+      if (form.id === 'register-form') {
+        const pass = document.getElementById('password');
+        const confirm = document.getElementById('password_confirm');
+        if (confirm.value && pass.value !== confirm.value) {
+          showError(confirm, 'Пароли не совпадают');
+          isFormValid = false;
+        }
+      }
+
+      if (!isFormValid) {
+        e.preventDefault(); // Останавливаем отправку, если есть ошибки
+      }
+    });
+
+    // Убираем ошибку сразу, когда пользователь начинает исправлять текст
+    inputs.forEach(input => {
+      input.addEventListener('input', () => validateInput(input));
+    });
+  });
+
+  function validateInput(input) {
+    const errorSpan = input.nextElementSibling;
+
+    if (input.validity.valueMissing) {
+      showError(input, 'Заполните это поле');
+      return false;
+    }
+    if (input.validity.typeMismatch && input.type === 'email') {
+      showError(input, 'Введите корректный email');
+      return false;
+    }
+    if (input.validity.tooShort) {
+      showError(input, `Минимум символов: ${input.minLength}`);
+      return false;
+    }
+
+    // Если всё верно — очищаем ошибку
+    input.classList.remove('invalid');
+    if (errorSpan) errorSpan.textContent = '';
+    return true;
+  }
+
+  function showError(input, message) {
+    const errorSpan = input.nextElementSibling;
+    input.classList.add('invalid');
+    if (errorSpan) errorSpan.textContent = message;
+  }
+</script>
+
+
+</body>
+</html>
