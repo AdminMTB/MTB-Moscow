@@ -18,6 +18,19 @@ align-items: center;
 justify-content: center;
 text-decoration: none;}
 
+.MainLink {background-color: #2D6A4F;
+color: white;
+height: 32px;width: 72px;
+border-radius: 15px;
+margin-right: 5px;
+margin-top: 44px;
+border: none;
+padding: 0px;
+display: inline-flex;
+align-items: center;
+justify-content: center;
+text-decoration: none;}
+
 .logo {margin-left: 4px;
 margin-top: 27px;}
 .calculators-container {
